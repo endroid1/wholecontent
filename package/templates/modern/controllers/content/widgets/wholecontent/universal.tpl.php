@@ -27,6 +27,19 @@ $ads_positions = $options['ads_positions'] ?? '';
 $ads_html = $options['ads_html'] ?? '';
 $infinite_scroll = $options['infinite_scroll'] ?? false;
 $items_per_page = $options['items_per_page'] ?? 6;
+$show_special = $options['show_special'] ?? false; // ДОБАВИТЬ ЭТУ СТРОКУ!
+
+// ДЛЯ ОТЛАДКИ - удалить после проверки
+if(cmsUser::isAdmin()) {
+    echo "<!-- WholeContent Debug Info -->";
+    echo "<!-- Infinite Scroll: " . ($infinite_scroll ? 'ENABLED' : 'DISABLED') . " -->";
+    echo "<!-- Items count: " . (isset($all_items) ? count($all_items) : 0) . " -->"; 
+    echo "<!-- Items per page: " . $items_per_page . " -->";
+    echo "<!-- Widget ID: " . $widget->id . " -->";
+    echo "<!-- AJAX Path: " . href_to('content', 'wholecontent_load_more') . " -->";
+    echo "<!-- Show Special: " . ($show_special ? 'YES' : 'NO') . " -->";
+}
+
 $this->addCSS('templates/modern/controllers/content/widgets/wholecontent/conf/base.css', false, 100);
 $this->addCSS('templates/modern/controllers/content/widgets/wholecontent/conf/layouts/' . $layout . '.css', false, 101);
 
@@ -115,6 +128,7 @@ if ($infinite_scroll && !empty($all_items) && count($all_items) >= $items_per_pa
     $script = "
     <script>
     $(document).ready(function() {
+        console.log('Initializing infinite scroll for widget: {$widget->id}');
         $('#wholecontent-{$widget->id}').wholecontentInfiniteScroll({
             widgetId: {$widget->id},
             loadingText: '".LANG_LOADING."',
@@ -128,5 +142,7 @@ if ($infinite_scroll && !empty($all_items) && count($all_items) >= $items_per_pa
     ";
     
     echo $script;
+} elseif ($infinite_scroll && cmsUser::isAdmin()) {
+    echo "<!-- Infinite scroll disabled: all_items=".(!empty($all_items)?'yes':'no').", count=".(!empty($all_items)?count($all_items):0).", items_per_page={$items_per_page} -->";
 }
 ?>
