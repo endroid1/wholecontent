@@ -1,0 +1,48 @@
+.wholecontent-layout-masonry .row {
+  display: block;
+  column-gap: var(--card-gap);
+}
+.wholecontent-layout-masonry[data-columns="2"] .row { column-count: 2; }
+.wholecontent-layout-masonry[data-columns="3"] .row { column-count: 3; }
+.wholecontent-layout-masonry[data-columns="4"] .row { column-count: 4; }
+.wholecontent-layout-masonry[data-columns="5"] .row { column-count: 5; }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: var(--card-gap);
+  display: inline-block;
+  width: 100%;
+}
+
+.masonry-standard { /* стандартный размер */ }
+.masonry-wide { column-span: all; }
+.masonry-tall { /* высокая карточка */ }
+
+@media (max-width: 1199px) {
+  .wholecontent-layout-masonry[data-columns="4"] .row,
+  .wholecontent-layout-masonry[data-columns="5"] .row {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 991px) {
+  .wholecontent-layout-masonry[data-columns="3"] .row,
+  .wholecontent-layout-masonry[data-columns="4"] .row,
+  .wholecontent-layout-masonry[data-columns="5"] .row {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .wholecontent-layout-masonry .row {
+    column-count: 1 !important;
+  }
+}
+.wholecontent-layout-masonry .card {
+  height: auto;
+  min-height: 200px;
+}
+
+.masonry-tall .card {
+  min-height: 350px;
+}

@@ -1,0 +1,25 @@
+.wholecontent-loader,
+.wholecontent-no-more {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.wholecontent-error {
+    grid-column: 1 / -1;
+    margin: 1rem 0;
+}
+
+/* Анимация загрузки */
+.wholecontent-loader .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Адаптивность */
+@media (max-width: 767px) {
+    .wholecontent-loader,
+    .wholecontent-no-more {
+        padding: 1.5rem 0;
+    }
+}

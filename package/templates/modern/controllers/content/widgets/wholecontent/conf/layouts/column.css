@@ -1,0 +1,16 @@
+.wholecontent-layout-column .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-0.5 * var(--card-gap));
+  margin-left: calc(-0.5 * var(--card-gap));
+  width: calc(100% + var(--card-gap));
+}
+
+.wholecontent-layout-column .row > [class*="col-"] {
+  padding-right: calc(0.5 * var(--card-gap));
+  padding-left: calc(0.5 * var(--card-gap));
+  margin-bottom: var(--card-gap);
+}
+.wholecontent-layout-column[data-columns="2"] .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+.wholecontent-layout-column[data-columns="3"] .col-lg-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.wholecontent-layout-column[data-columns="4"] .col-lg-3 { flex: 0 0 25%; max-width: 25%; }

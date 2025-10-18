@@ -1,0 +1,23 @@
+.wholecontent-layout-dynamic .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-0.5 * var(--card-gap));
+  margin-left: calc(-0.5 * var(--card-gap));
+  width: calc(100% + var(--card-gap));
+}
+
+.wholecontent-layout-dynamic [class^="col-md-"] {
+  padding-right: calc(0.5 * var(--card-gap));
+  padding-left: calc(0.5 * var(--card-gap));
+}
+
+.wholecontent-layout-dynamic [class^="col-md-"] .ratio { 
+  aspect-ratio: 16/9; 
+}
+
+@media (max-width: 767px) {
+  .wholecontent-layout-dynamic[data-mobile-cols="2"] [class^="col-md-"] {
+    flex: 0 0 calc(50% - var(--mobile-gap));
+    max-width: calc(50% - var(--mobile-gap));
+  }
+}
